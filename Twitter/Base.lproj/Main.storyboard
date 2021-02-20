@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="zeJ-Tm-DXL">
             <objects>
-                <viewController id="0f0-io-Vn2" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0f0-io-Vn2" customClass="LoginViewController" customModule="AliTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ht-Ma-ho4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,6 +32,11 @@
                                     <action selector="onLoginButton:" destination="0f0-io-Vn2" eventType="touchUpInside" id="rR2-ml-AZY"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="kjB-Nb-XgG">
+                                <rect key="frame" x="76" y="153" width="223" height="137"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xCR-wq-dVA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="-2951.1999999999998" y="-1749.1754122938532"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="lHH-YV-QAJ">
             <objects>
-                <tableViewController id="46U-7T-MMe" sceneMemberID="viewController">
+                <tableViewController id="46U-7T-MMe" customClass="HomeTableViewController" customModule="AliTwitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WZB-XO-iLg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +76,14 @@
                             <outlet property="delegate" destination="46U-7T-MMe" id="NG9-Xm-6rE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="vgF-Hf-6un"/>
+                    <navigationItem key="navigationItem" title="Home" id="vgF-Hf-6un">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="86E-76-V66">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="LogoutButton:" destination="46U-7T-MMe" id="cUq-dr-fPz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lI2-MH-8eI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,6 +96,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t5P-gW-6yK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="46U-7T-MMe" kind="relationship" relationship="rootViewController" id="1Gn-ju-i7N"/>
@@ -95,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TwitterLogoBlue" width="200" height="200"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
