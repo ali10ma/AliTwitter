@@ -13,22 +13,40 @@ class HomeTableViewController: UITableViewController {
     var tweetArray = [NSDictionary]()
     var numberOfTweet: Int!
     
-    func loadTweet(){
+    let myRefreshControl = UIRefreshControl()
+    
+    //when program runs the first time, we're running the "loadTweet"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //
+        loadTweet()
+        
+        myRefreshControl.addTarget(self, action: #selector(loadTweet), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
+        
+    }
+    
+    @objc func loadTweet(){
         
         let mUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = ["count": 10]
+        let myParams = ["count": 20]
 
-        
+        //Get Tweets
         TwitterAPICaller.client?.getDictionariesRequest(url: mUrl, parameters: myParams, success: { (tweets: [NSDictionary]) in
             
+            //Clear & Refresh my list
             self.tweetArray.removeAll()
             for tweet in tweets{
-                
                 self.tweetArray.append(tweet)
-                
+                                
             }
-            
+            //Update the Table
             self.tableView.reloadData()
+            
+            //End Refreshing
+            self.myRefreshControl.endRefreshing()
+
             
         }, failure:{(Error) in print("Could Not Retrieve tweets! oh no!")
         
@@ -45,13 +63,7 @@ class HomeTableViewController: UITableViewController {
         //
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //
-        loadTweet()
-        
-    }
+
     
     //
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
