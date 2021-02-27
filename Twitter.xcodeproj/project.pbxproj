@@ -80,10 +80,10 @@
 			children = (
 				6EBCF54D21E71F9400451C03 /* Launch Screen.storyboard */,
 				6EBCF52921DF07FC00451C03 /* Main.storyboard */,
-				6EBCF54321E047A500451C03 /* TwitterAPICaller.swift */,
 				6EBCF52521DF07FC00451C03 /* AppDelegate.swift */,
 				37D29B8521F90E3400984A88 /* Assets.xcassets */,
 				6EBCF53121DF07FE00451C03 /* Info.plist */,
+				6EBCF54321E047A500451C03 /* TwitterAPICaller.swift */,
 				47128EC325E093AE00576D28 /* LoginViewController.swift */,
 				47128EC725E0A13600576D28 /* HomeTableViewController.swift */,
 				47128ECA25E0CA2D00576D28 /* TwittCellTableViewCell.swift */,
